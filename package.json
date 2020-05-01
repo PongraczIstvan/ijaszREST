@@ -1,0 +1,19 @@
+{
+  "name": "ijaszrest",
+  "version": "1.0.0",
+  "description": "ijasz REST API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PongraczIstvan/ijaszREST.git"
+  },
+  "author": "Julio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PongraczIstvan/ijaszREST/issues"
+  },
+  "homepage": "https://github.com/PongraczIstvan/ijaszREST#readme"
+}
