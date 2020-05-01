@@ -5,6 +5,6 @@
     "version": "1.0.0",
     "description": "Íjászverseny nyilvántartó file és adat kiszolgálója"
   },
-  "host": "kvserver.konyvelesem.hu",
-  "schemes": ["http", "https"]
+  "host": "plausible-aware-boater.glitch.me/",
+  "schemes": ["https"]
 }
