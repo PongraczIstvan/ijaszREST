@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/PongraczIstvan/ijaszREST/issues"
   },
-  "homepage": "https://github.com/PongraczIstvan/ijaszREST#readme"
+  "homepage": "https://github.com/PongraczIstvan/ijaszREST#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "swagger-ui-express": "^4.1.4"
+  }
 }
