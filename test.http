@@ -1,0 +1,110 @@
+# TEST file
+### Változók
+@hostName = http://localhost:3000
+@jwtLogin = 5eb134caa3d21d0d9a5457e0
+
+@ID = 5ead7434c4d8e91f433a66c1
+
+### USER LIST
+GET {{hostName}}/user
+
+### ADOTT USER 
+GET {{hostName}}/user/{{ID}}
+
+### ADOTT USER törlése
+DELETE {{hostName}}/user/{{ID}}
+
+
+### USER ADD
+POST {{hostName}}/user
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer {{jwtLogin}}
+
+{      
+    "userName": "Vagány Vili5",
+    "password": "123456"    
+}
+
+
+### USER Login
+POST {{hostName}}/user/login
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer {{jwtLogin}}
+
+{      
+    "userName": "Vagány Vili4",
+    "password": "123456"    
+}
+
+
+################################################################
+### verseny
+################################################################
+
+@versenyID = 5eb161645abad616b84083f6
+
+### VERSENY LIST
+GET {{hostName}}/verseny
+
+### ADOTT VERSENY 
+GET {{hostName}}/verseny/{{versenyID}}
+
+### VERSENY ADD
+POST {{hostName}}/verseny
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer {{jwtLogin}}
+
+{      
+    "versenyName": "KGY I. minősítője",
+    "startDate": "2020-05-16",
+    "helyszín": "Nagyhegyes",
+    "tipus": "Örömíjász"    
+}
+
+
+#  versenyName: { type: String, required: true },
+#     startDate: { type: Date, required: true },
+#     helyszín: { type: String },
+#     tipus: {
+#       type: String,
+#       enum: ["Pályaverseny", "3D", "Történelmi", "Örömíjász"],
+#     },
+
+################################################################
+### eredmeny
+################################################################
+
+
+### EREDMENY LIST
+GET {{hostName}}/eredmeny
+
+### ADOTT EREDMENY 
+GET {{hostName}}/eredmeny/{{versenyID}}
+
+### EREDMENY ADD
+POST {{hostName}}/eredmeny
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer {{jwtLogin}}
+
+{      
+    "name": "Pongrácz István",  
+    "kategoria": "TR",
+    "gender": 1,
+    "korosztaly": 7,
+    "pontszam": 352,    
+    "verseny": "5eb161645abad616b84083f6"
+}
+
+# name: { type: String, required: true },
+#     egyesulet: String,
+#     kategoria: { type: String, required: true, enum: ["PBHB", "BB", "TR"] },
+#     gender: { type: Number, required: true, enum: [0, 1] },
+#     korosztaly: { type: Number, min: 0, max: 10 },
+#     pontszam: { type: Number, min: 0 },
+#     teljesitmeny: Number,
+#     verseny: {
+#       type: mongoose.Schema.Types.ObjectId,
+#       ref: "Verseny",
+#       required: true,
+#     },
+#     versenyzo: { type: mongoose.Schema.Types.ObjectId, ref: "User" },

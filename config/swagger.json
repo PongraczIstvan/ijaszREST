@@ -1,10 +1,41 @@
 {
   "swagger": "2.0",
+  "basePath": "/api",
   "info": {
     "title": "Íjász REST API",
     "version": "1.0.0",
-    "description": "Íjászverseny nyilvántartó file és adat kiszolgálója"
+    "description": "Íjászverseny nyilvántartó adat kiszolgálója"
   },
   "host": "plausible-aware-boater.glitch.me/",
-  "schemes": ["https"]
+  "schemes": ["https"],
+  "paths": {
+    "/user": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "name": {
+      "name": "name",
+      "in": "body",
+      "description": "",
+      "schema": {}
+    }
+  }
 }
