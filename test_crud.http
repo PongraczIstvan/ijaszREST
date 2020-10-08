@@ -3,7 +3,18 @@
 @hostName = http://localhost:3000
 @jwtLogin = 5eb134caa3d21d0d9a5457e0
 
-@ID = 5eb3bb49431a5811488160f9
+@ID = 5eb2800f27d5550bde60e8b2
+
+###  TEST LIST
+get {{hostName}}/test?name_sort:desc
+
+### TEST ADD
+post {{hostName}}/test
+Content-Type: application/json; charset=utf-8
+
+{
+    "name": "Kiss Lilla"
+}
 
 ### USER LIST
 GET {{hostName}}/user
@@ -13,7 +24,7 @@ GET {{hostName}}/user/import
 
 
 ### ADOTT USER 
-GET {{hostName}}/user/{{ID}}
+GET {{hostName}}/user?userName_sort:asc
 
 ### ADOTT USER törlése
 DELETE {{hostName}}/user/{{ID}}

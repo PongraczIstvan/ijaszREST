@@ -1,0 +1,102 @@
+openapi: "3.0.2"
+info:
+  title: IJASZ REST API
+  version: "1.0"
+
+servers:
+  - url: https://plausible-aware-boater.glitch.me/api
+    description: glitch - free nodejs hosting
+  - url: http://localhost:3000/api
+    description: developer server
+tags:
+  - name: User
+    description: Felhasználók, íjászok adatai
+  - name: Versenyek
+    description: Versenyek nyilvántartása
+  - name: Eredmeny
+    description: Versenyeredmények nyilvántartása
+paths:
+  /user:
+    get:
+      description: felhasználók tömbjének lekérdezése
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+
+    post:
+      description: új felhasználó rögzítése
+      tags:
+        - User
+      requestBody:
+        $ref: "#/components/requestBodies/UserBody"
+
+      responses:
+        "200":
+          description: rögzített felhasználó object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/User"
+components:
+  requestBodies:
+    UserBody:
+      description: User adatok megadása, módosítása
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              userName:
+                type: string
+              password:
+                type: string
+                format: password # kódolva
+
+  schemas:
+    Cimek:
+      description: Címek, elismerések tárolása user Object-ben
+      type: object
+      properties:
+        _id:
+          type: string
+          readOnly: true
+          description: MONGODB idObject
+        neve:
+          type: string
+        ev:
+          type: integer
+          minimum: 2000
+          maximum: 2030
+        megjegyzes:
+          type: string
+
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          readOnly: true
+        userName:
+          type: string
+          uniqueItems: true
+        loginCount:
+          type: integer
+          readOnly: true
+        lastLogin:
+          type: string
+          format: date
+          readOnly: true
+        cimek:
+          type: array
+          items:
+            $ref: "#/components/schemas/Cimek"

@@ -7,15 +7,14 @@ const cimekSchema = new Schema({
   megjegyzes: String,
 });
 
-const userSchema = new Schema(
+const testSchema = new Schema(
   {
-    userName: { type: String, required: true, unique: true },
-    password: String,
+    name: { type: String, required: true, unique: true },
     loginCount: { type: Number, default: 0 },
     lastLogin: { type: Date, default: null },
     cimek: [cimekSchema],
   },
-  { collection: "user", timestamps: true }
+  { collection: "test", timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Test", testSchema);
